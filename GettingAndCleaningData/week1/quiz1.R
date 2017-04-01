@@ -1,3 +1,5 @@
+dateDownloaded<-date() #"Fri Mar 31 17:33:44 2017"
+
 #Download csv file
 url<-"https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv"
 dir<-"~/DataScience/Git/datasciencecoursera/GettingAndCleaningData/week1/data.csv"
