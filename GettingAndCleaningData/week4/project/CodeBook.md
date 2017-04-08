@@ -10,83 +10,103 @@ axis in the 3-axial raw signal. From these variables the mean and standard devia
 More information about the original dataset in the files _features.txt_ and _features_info.txt_ contained in the original dataset.
 
 __SubjectID__
+
         Integer in range 1-30 identifying the subject.
         Same as in the original dataset.
         
 __Activity__
+
         Factor with levels (Laying, Sitting, Standing, Walking, WalkingUpstairs and WalkingDownStairs) 
         indicating the type of activity performed.
         Converted from the original dataset according to the activity_labels.txt file.
         
 __meanBodyAcceleration_meanX__
-        Numeric value in range [-1,1] containing the mean value of the variable tBodyAcc-mean()-X from the original dataset
-        averaged for each subject and activity.
+
+        Numeric value in range [-1,1] containing the mean value of the variable tBodyAcc-mean()-X from the 
+        original dataset averaged for each subject and activity.
         
 __meanBodyAcceleration_meanY__
-        Numeric value in range [-1,1] containing the mean value of the variable tBodyAcc-mean()-Y from the original dataset
-        averaged for each subject and activity.
+
+        Numeric value in range [-1,1] containing the mean value of the variable tBodyAcc-mean()-Y from the 
+        original dataset averaged for each subject and activity.
       
 __meanBodyAcceleration_meanZ__
-        Numeric value in range [-1,1] containing the mean value of the variable tBodyAcc-mean()-Z from the original dataset
-        averaged for each subject and activity.
+
+        Numeric value in range [-1,1] containing the mean value of the variable tBodyAcc-mean()-Z from the 
+        original dataset averaged for each subject and activity.
         
 __meanBodyAcceleration_sdX__
-        Numeric value in range [-1,1] containing the mean value of the variable tBodyAcc-std()-X from the original dataset
-        averaged for each subject and activity.
+
+        Numeric value in range [-1,1] containing the mean value of the variable tBodyAcc-std()-X from the 
+        original dataset averaged for each subject and activity.
         
 __meanBodyAcceleration_sdY__
-        Numeric value in range [-1,1] containing the mean value of the variable tBodyAcc-std()-Y from the original dataset
-        averaged for each subject and activity.
+
+        Numeric value in range [-1,1] containing the mean value of the variable tBodyAcc-std()-Y from the 
+        original dataset averaged for each subject and activity.
       
 __meanBodyAcceleration_sdZ__
-        Numeric value in range [-1,1] containing the mean value of the variable tBodyAcc-std()-Z from the original dataset
-        averaged for each subject and activity.
+
+        Numeric value in range [-1,1] containing the mean value of the variable tBodyAcc-std()-Z from the 
+        original dataset averaged for each subject and activity.
         
 __meanGravityAcceleration_meanX__
-        Numeric value in range [-1,1] containing the mean value of the variable tGravityAcc-mean()-X from the original dataset
-        averaged for each subject and activity.
+
+        Numeric value in range [-1,1] containing the mean value of the variable tGravityAcc-mean()-X from the 
+        original dataset averaged for each subject and activity.
         
 __meanGravityAcceleration_meanY__
-        Numeric value in range [-1,1] containing the mean value of the variable tGravityAcc-mean()-Y from the original dataset
-        averaged for each subject and activity.
+
+        Numeric value in range [-1,1] containing the mean value of the variable tGravityAcc-mean()-Y from the 
+        original dataset averaged for each subject and activity.
       
 __meanGravityAcceleration_meanZ__
-        Numeric value in range [-1,1] containing the mean value of the variable tGravityAcc-mean()-Z from the original dataset
-        averaged for each subject and activity.
+
+        Numeric value in range [-1,1] containing the mean value of the variable tGravityAcc-mean()-Z from the 
+        original dataset averaged for each subject and activity.
         
 __meanGravityAcceleration_sdX__
-        Numeric value in range [-1,1] containing the mean value of the variable tGravityAcc-std()-X from the original dataset
-        averaged for each subject and activity.
+
+        Numeric value in range [-1,1] containing the mean value of the variable tGravityAcc-std()-X from the 
+        original dataset averaged for each subject and activity.
         
 __meanGravityAcceleration_sdY__
-        Numeric value in range [-1,1] containing the mean value of the variable tGravityAcc-std()-Y from the original dataset
-        averaged for each subject and activity.
+
+        Numeric value in range [-1,1] containing the mean value of the variable tGravityAcc-std()-Y from the 
+        original dataset averaged for each subject and activity.
       
 __meanGravityAcceleration_sdZ__
-        Numeric value in range [-1,1] containing the mean value of the variable tGravityAcc-std()-Z from the original dataset
-        averaged for each subject and activity.
+
+        Numeric value in range [-1,1] containing the mean value of the variable tGravityAcc-std()-Z from the 
+        original dataset averaged for each subject and activity.
         
 __meanBodyAngularVelocity_meanX__
-        Numeric value in range [-1,1] containing the mean value of the variable tBodyGyro-mean()-X from the original dataset
-        averaged for each subject and activity.
+
+        Numeric value in range [-1,1] containing the mean value of the variable tBodyGyro-mean()-X from the 
+        original dataset averaged for each subject and activity.
         
 __meanBodyAngularVelocity_meanY__
-        Numeric value in range [-1,1] containing the mean value of the variable tBodyGyro-mean()-Y from the original dataset
-        averaged for each subject and activity.
+
+        Numeric value in range [-1,1] containing the mean value of the variable tBodyGyro-mean()-Y from the 
+        original dataset averaged for each subject and activity.
       
 __meanBodyAngularVelocity_meanZ__
-        Numeric value in range [-1,1] containing the mean value of the variable tBodyGyro-mean()-Z from the original dataset
-        averaged for each subject and activity.
+
+        Numeric value in range [-1,1] containing the mean value of the variable tBodyGyro-mean()-Z from the 
+        original dataset averaged for each subject and activity.
         
 __meanBodyAngularVelocity_sdX__
+
         Numeric value in range [-1,1] containing the mean value of the variable tBodyGyro-std()-X from the original dataset
         averaged for each subject and activity.
         
 __meanBodyAngularVelocity_sdY__
+
         Numeric value in range [-1,1] containing the mean value of the variable tBodyGyro-std()-Y from the original dataset
         averaged for each subject and activity.
       
 __meanBodyAngularVelocity_sdZ__
+
         Numeric value in range [-1,1] containing the mean value of the variable tBodyGyro-std()-Z from the original dataset
         averaged for each subject and activity.
                 
