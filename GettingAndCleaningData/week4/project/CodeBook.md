@@ -97,16 +97,16 @@ __meanBodyAngularVelocity_meanZ__
         
 __meanBodyAngularVelocity_sdX__
 
-        Numeric value in range [-1,1] containing the mean value of the variable tBodyGyro-std()-X from the original dataset
-        averaged for each subject and activity.
+        Numeric value in range [-1,1] containing the mean value of the variable tBodyGyro-std()-X from the 
+        original dataset averaged for each subject and activity.
         
 __meanBodyAngularVelocity_sdY__
 
-        Numeric value in range [-1,1] containing the mean value of the variable tBodyGyro-std()-Y from the original dataset
-        averaged for each subject and activity.
+        Numeric value in range [-1,1] containing the mean value of the variable tBodyGyro-std()-Y from the 
+        original dataset averaged for each subject and activity.
       
 __meanBodyAngularVelocity_sdZ__
 
-        Numeric value in range [-1,1] containing the mean value of the variable tBodyGyro-std()-Z from the original dataset
-        averaged for each subject and activity.
+        Numeric value in range [-1,1] containing the mean value of the variable tBodyGyro-std()-Z from the 
+        original dataset averaged for each subject and activity.
                 
