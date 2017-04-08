@@ -1,12 +1,14 @@
 ### CodeBook - tidydataset.txt
 
 This dataset is derived from the dataset provided in the following [link](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
-containing data from the Samsung Galaxy S accelerometer on 30 subjects while performing 6 different acivities.
-The original time domain signals from the accelerometer (tAcc-XYZ and tGyro-XYZ) were sampled at a rate of 50Hz and then filtered using a median filter and a 3rd order 
-low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Afterwards they were separated into body (tBodyAcc-XYZ) and gravity (tGravityAcc-XYZ)
-using another low pass Butterworth filter with a corner frequency of 0.3 Hz. The suffixes -XYZ correspond to the corresponding 
-axis in the 3-axial raw signal. From these variables the mean and standard deviation were estimated (and hence the suffix
--mean() and -std(), respectively.
+containing data from the Samsung Galaxy S accelerometer on 30 subjects while performing 6 different activities.
+
+The original time domain signals from the accelerometer (_tAcc-XYZ_ and _tGyro-XYZ_) were sampled at a rate of 50Hz and then filtered using a median filter and a 3rd order 
+low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Afterwards they were separated into body (_tBodyAcc-XYZ_) and gravity (_tGravityAcc-XYZ_) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+The suffixes -XYZ correspond to the corresponding axis in the 3-axial raw signal. 
+
+From these variables the mean and standard deviation were estimated (and hence the suffix _-mean()_ and _-std()_, respectively).
+
 More information about the original dataset in the files _features.txt_ and _features_info.txt_ contained in the original dataset.
 
 __SubjectID__
