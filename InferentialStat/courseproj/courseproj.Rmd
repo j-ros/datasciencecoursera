@@ -1,0 +1,86 @@
+---
+title: "Inferential Statistics Course Project"
+author: "j-ros"
+date: ""
+output: html_document
+---
+
+##Exponential distribution: simultion analysis
+
+###Introduction
+
+In this section we are going to explore the statistical properties of the 
+exponential distribution via averages of 40 exponentials. We will do 1000
+simulations and compare the results with the theoretical expected ones.
+
+###Setup
+
+The code below simulates 1000 instances of 40 exponential distributions with 
+rate parameter 0.2. It also reports the mean and variance of the simulated 
+distribution.
+
+```{r}
+lambda<-0.2
+n<-1000
+m<-40
+simRes<-array(rexp(n*m,lambda),c(n,m))
+simMean<-apply(simRes,1,mean)
+simVar<-apply(simRes,1,var)
+sm<-mean(simMean); sv<-mean(simVar)
+```
+
+We can see that the sample mean `r sm` approaches the theoretical result of 
+1/lambda = 5 and that the sample variance `r sv` approaches the theoretical
+values of (1/lambda)^2 = 25, as per the Law of Large Numbers.
+
+###Analysis
+
+Now that we have our simulated distribution and parameters computed, we are 
+going to show that the distribution resulting from simulations approaches a 
+Gaussian one as stated by the Central Limit Theorem.
+
+```{r}
+hist(simMean,main="Distribution of means of 40 exponentials",probability=T,
+     xlab="Mean of 40 exponentials")
+curve(dnorm(x,mean=mean(simMean),sd=sd(simMean)),add=T,lwd=4)
+```
+
+##Basic Inferential Data Analysis
+
+###Introduction
+In this section we are going to perform basic inferential data analysis on the 
+ToothGrowth dataset. First we explore the variables present and convert the dose
+to factor. Then plot the len variable depending on supp and dose.
+
+```{r}
+str(ToothGrowth)
+summary(ToothGrowth)
+ToothGrowth$dose<-as.factor(ToothGrowth$dose)
+plot(len~supp,data=ToothGrowth,xlab="Delivery method", ylab="Tooth length", main="Tooth length by Delivery method")
+plot(len~dose,data=ToothGrowth,xlab="Dose", ylab="Tooth length", main="Tooth length by Dose")
+```
+
+Looking at the graphs, we are interested in testing whether or not the Tooth length for Delivery method OJ is significatively larger than VC. We are performing an independent group t-test for the unequal variance case at 95\% conficence level.
+
+```{r}
+x<-subset(ToothGrowth,supp=="OJ",len)
+y<-subset(ToothGrowth,supp=="VC",len)
+t.test(x,y,alternative="greater")
+```
+
+Since the p-value is smaller than 0.05 we find that Delivery method OJ produces larger
+tooth length at a significant level.
+
+We can similarly test the differences in dose, particularly Dose 2mg with respect the the other 2 in terms of Tooth length..
+
+```{r}
+x<-subset(ToothGrowth,dose=="0.5",len)
+y<-subset(ToothGrowth,dose=="1",len)
+z<-subset(ToothGrowth,dose=="2",len)
+t.test(z,x,alternative="greater")
+t.test(z,y,alternative="greater")
+```
+
+In both cases we find that Dose 2mg is significantly better than Dose 1mg and 0.5mg
+even if we correct for false discovery rate, due to performing 2 tests on the same
+dataset.
