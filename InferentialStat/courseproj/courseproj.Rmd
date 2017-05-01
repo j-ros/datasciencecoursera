@@ -1,8 +1,11 @@
 ---
 title: "Inferential Statistics Course Project"
 author: "j-ros"
-date: ""
-output: html_document
+date: ''
+output:
+  word_document: default
+  pdf_document: default
+  html_document: default
 ---
 
 ##Exponential distribution: simultion analysis
