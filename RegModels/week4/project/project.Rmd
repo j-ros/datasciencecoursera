@@ -1,0 +1,82 @@
+---
+title: "Automatic and manual transmission relation with miles er gallon (MPG) consumption"
+author: "j-ros"
+date: ''
+output:
+  word_document: default
+  pdf_document: default
+  html_document: default
+---
+
+##Summary
+
+In this report we are going to analise and quantify the relation between type of transmission (automatic or manual) with the fuel consumption in miles per gallon (mpg) using the mtcars dataset in R. This dataset comprises data for 32 automobile models from 1973-1974 and was extracted from the 1974 Motor Trend US magazine.
+
+##Analysis
+
+###Data exploration
+
+First we are going to explore the dataset and the variables that are contained in it.
+We can see that from the 32 car models, 19 are automatic while 13 are manual and that the mpg ranges from 10.40 to 33.90 miles per gallon.
+
+```{r}
+data(mtcars)
+str(mtcars)
+summary(mtcars)
+sum(mtcars$am==0) #19 automatic cars, 32-19=13 manual cars
+```
+
+First we are going to convert the am, cyl, gear, carb and vs variables into a factor and rename the former factor levels to Auto and Manual. We are also going to plot miles per gallon versus transmission type where we can see that there seems to be a difference between the two transmission types, as manual cars tend to have a higher mpg than automatic ones.
+
+```{r}
+mtcars$am<-factor(mtcars$am)
+mtcars$cyl<-factor(mtcars$cyl)
+mtcars$gear<-factor(mtcars$gear)
+mtcars$carb<-factor(mtcars$carb)
+mtcars$vs<-factor(mtcars$vs)
+levels(mtcars$am)<-c("Auto","Manual")
+boxplot(mtcars$mpg~mtcars$am,main="mpg vs transmission type",xlab="Transmission type",ylab="Miles per gallon (mpg)")
+```
+
+Now let's see in a pairs plot how the variables in the dataset are correlated, to identify possible cofounders. It seems that the variables cyl, disp, hp and wt are highly correlated while drat is inversely correlated with the rest of them.
+
+```{r}
+pairs(mtcars)
+```
+
+###Modelling
+
+With the information obtained in the exploratory phase we are going to detail 3 nested models. First the minimal model in which we are interested, then we are going to add disp since we have observed it is correlated with most of the other variables and finally we are going to add the rest of the variables not correlated with disp to see how much more variance they explain.
+
+- Model 1: mpg ~ am
+- Model 2: mpg ~ am + disp
+- Model 3: mpg ~ am + disp + qsec + vs + gear + carb
+
+```{r}
+model1<-lm(mpg~am,data=mtcars)
+model2<-lm(mpg~am+disp,data=mtcars)
+model3<-lm(mpg~am+disp+qsec+vs+gear+carb,data=mtcars)
+anova(model1,model2,model3)
+```
+
+From the anova test, we can see that adding the variable disp is significant into explaining more variance of the model while adding the rest is not. So we are going to choose Model 2 from here onwards. 
+
+Finally we plot the residual plot for model 2 to try to identify any pattern in the residuals and we also perform a dfbetas test to check if there's any point with high leverage or influence in our dataset that could be driving the analysis. 
+
+```{r}
+par(mfrow=c(2,2))
+plot(model2)
+dfbetas(model2)
+```
+From both these analysis we can se that no pattern is obvious in the residual plots and also the resulting dfbetas are all of similar order of magnitude, thus indicating that there's no point with high influence driving the analysis.
+
+##Conclusion
+
+Now we are going to use model 2 to answer the questions that we stated at the start of the report: whether automatic or manual transmission is better for miles per gallon consumption and to quantify such a difference.
+
+```{r}
+summary(model2)
+```
+We can see from the amManual coefficient of the regression that the difference from automatic to manual in the outcome mpg is of 1.83 with a standard error or 1.43. That is manual cars tend to have a higher mpg value than automatic cars. This difference is though not significant at a 95\% confidence interval since the associated p-value is 0.2.
+
+Therefore, we conclude that there is no difference in mpg with respect to transmission type (automatic or manual) at a 95\% confidence interval. 
