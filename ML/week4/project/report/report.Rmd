@@ -1,0 +1,80 @@
+---
+title: "Machine learning on Har dataset"
+author: "j-ros"
+date: ""
+output: html_document
+---
+
+##Synopsis
+
+In this report we aim to predict the manner in which an exercise is done using data from acceleraometers on the belt, forearm, arm and dumbbell of 6 participants.
+
+##Loading and processing the raw data
+
+From the [Har Dataset](https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv) 
+we have obtained data from accelerometers of 6 participants doing an exercise in
+different manners. We will use that dataset to train the ML algorithm and the 
+[dataset](https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv) 
+for predicting the outcome using the trained model.
+
+###Reading the data
+
+First we read the data on both the training and testing sets and delete the first 7 columns that have no use to train the algorithm. Then we select those columns that have no NA values in both the training and testing dataset and we convert them to numeric class except the outcome column.
+
+```{r}
+train<-read.csv("train.csv")
+test<-read.csv("test.csv")
+train<-train[,-c(1:7)]
+test<-test[,-c(1:7)]
+
+train.na<-colSums(sapply(train,is.na))
+test.na<-colSums(sapply(test,is.na))
+train<-train[,train.na==0 & test.na==0]
+test<-test[,train.na==0 & test.na==0]
+
+train<-as.data.frame(lapply(train,as.numeric))
+train$classe<-as.factor(train$classe)
+test<-as.data.frame(lapply(test,as.numeric))
+test$problem_id<-as.factor(test$problem_id)
+```
+
+##Training
+
+First we will train a random forest algortihm on the training dataset using a 
+parallel approach to speed up the computations. We use 5 k-fold cross-validation 
+as our cross-validation method. We fit the outcome variable, classe, to all the
+other variables. We set the seed to 1234 for reproducibility.
+
+```{r,cache=TRUE,message=FALSE}
+library(parallel)
+library(doParallel)
+cluster <- makeCluster(detectCores() - 1) # convention to leave 1 core for OS
+registerDoParallel(cluster)
+
+library(caret)
+fitControl <- trainControl(method = "cv",
+                           number = 5,
+                           allowParallel = TRUE)
+
+set.seed(1234)
+fit <- train(classe~., method="rf",data=train,trControl = fitControl)
+
+stopCluster(cluster)
+registerDoSEQ()
+```
+
+Now we are going to check the accuracy of the fitted model. We can see it has an accuracy of over 99% in all 5 folds, so out-of-sample error of similar order would be expected. We also construct a confusion matrix of the predicted versus actual classes in the training dataset where we see that all are predicted right.
+
+```{r,message=FALSE}
+fit
+fit$resample
+pred<-predict(fit,train); table(pred,train$classe)
+```
+
+## Prediction
+
+Now we are going to use the fitted model to predict the outcome on the testing set.
+
+```{r}
+predict(fit,newdata=test)
+``` 
