@@ -1,0 +1,49 @@
+---
+title: "Leaflet map"
+author: "j-ros"
+date: ""
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+`r date()`
+
+```{r, message=F}
+df<-data.frame(lat=c(35,-25,62,65,60),
+               lng=c(136,135,10,-18,-95),
+               name=c("japan","australia","norway","iceland","canada"),
+               popup=c("Nintendo!","Kangaroos!","Fjords!","Pretty cold!","Ice hockey!"))
+library(leaflet)
+flags<-iconList(
+        japan = makeIcon(
+                iconUrl="http://upload.wikimedia.org/wikipedia/commons/6/62/Flag_of_Japan_(with_border).png",
+                iconWidth=47,iconHeight=31,
+                iconAnchorX=47/2,iconAnchorY=16
+        ),
+        australia = makeIcon(
+                iconUrl="http://1.bp.blogspot.com/-Ld4WarVM9NY/UFiN-Nra-xI/AAAAAAAAAGQ/o2QXZrjmfVg/s1600/australian_flag_printables.gif",
+                iconWidth=47,iconHeight=31,
+                iconAnchorX=47/2,iconAnchorY=16
+        ),
+        norway = makeIcon(
+                iconUrl="https://upload.wikimedia.org/wikipedia/commons/f/f1/Flag_of_Norway.png",
+                iconWidth=47,iconHeight=31,
+                iconAnchorX=47/2,iconAnchorY=16
+        ),
+        iceland = makeIcon(
+                iconUrl="http://upload.wikimedia.org/wikipedia/commons/4/4d/Flag_of_Iceland.png",
+                iconWidth=47,iconHeight=31,
+                iconAnchorX=47/2,iconAnchorY=16
+        ),
+        canada = makeIcon(
+                iconUrl="https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Flag_of_Canada.svg/1280px-Flag_of_Canada.svg.png",
+                iconWidth=47,iconHeight=31,
+                iconAnchorX=47/2,iconAnchorY=16
+        )
+)
+df %>% leaflet() %>% addTiles() %>% addMarkers(icon=flags[df$name],popup=df$popup)
+```
+

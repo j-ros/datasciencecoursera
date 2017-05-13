@@ -1,0 +1,18 @@
+---
+title: "Plotly Plot"
+author: "j-ros"
+date: "13/05/2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+## AirPassengers
+```{r,message=FALSE}
+library(plotly)
+library(dplyr)
+pass<-as.data.frame(as.numeric(AirPassengers)) %>% mutate(time=time(AirPassengers))
+names(pass)<-c("Passengers","Time")
+plot_ly(pass,x=~Time,y=~Passengers,type="scatter",mode="lines+markers")
+```

@@ -1,0 +1,52 @@
+Guess the Number Shiny App
+========================================================
+author: j-ros
+date: 
+autosize: true
+
+Motivation
+========================================================
+
+- Ever bored at your computer with nothing to do?
+- Your code is compiling and you are just waiting?
+- Waiting for your Random forest algorithm to finish training?
+
+If you answered yes to any of those question here comes the solution!
+
+Solution
+========================================================
+
+Try the new Guess the number app!
+
+1. Fully programmed with Shiny in R.
+2. Stand-alone version on [shinyapps.io](http://www.shinyapps.io/).
+3. Easy to learn, addictive numeric experience. 
+
+Description
+========================================================
+
+Just insert a number from 0 to 100 in the numeric input field and click 
+the submit button. In the main panel you can check whether or not your guess was correct plus some hints as to which number is correct.
+
+```{r, echo=FALSE}
+set.seed(1234)
+num<-42
+guess<-33
+```
+
+If the correct number is `r num` and your guess is `r guess` then you are far from the truth. Or as the Mastermind would say:
+
+```{r,echo=F}
+ifelse(F,"NOOO! You got it!","WRONG! Try again...")
+```
+
+But if you guess it right then...
+
+```{r,echo=F}
+ifelse(T,"NOOO! You got it!","WRONG! Try again...")
+```
+
+More info
+========================================================
+
+Try it now at [shinyapps.io](https://j-ros.shinyapps.io/guessNumber/)
