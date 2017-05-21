@@ -1,4 +1,3 @@
-# datasciencecoursera
-Repo for the Data Science course on Coursera
+# Readme
 
-First push from RStudio
+Repository for exercises in the [Data Science specialization](https://www.coursera.org/specializations/jhu-data-science/) on Coursera.
