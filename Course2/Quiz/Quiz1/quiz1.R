@@ -1,5 +1,3 @@
-setwd("C:/Users/Jesus/Documents/DataScience/Git/datasciencecoursera/Rprog/quiz1")
-
 data<-read.csv("hw1_data.csv")
 
 data[1:2,]

@@ -1,6 +1,3 @@
-#Set the working directory to the correct folder
-setwd("~/DataScience/Git/datasciencecoursera/RR/week1")
-
 #Read data
 data<-read.csv("payments.csv")
 
